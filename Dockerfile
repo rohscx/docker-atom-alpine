@@ -2,7 +2,9 @@ FROM alpine
 
 MAINTAINER Rohscx <emailaddress.com>
 
-RUN apk update
+RUN   apk update \                                                                                                                                                                                                                        
+  &&   apk add ca-certificates wget \                                                                                                                                                                                                      
+  &&   update-ca-certificates  
 
 
 
