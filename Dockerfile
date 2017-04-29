@@ -1,12 +1,20 @@
-FROM alpine
+# VERSION:        0.1
+# DESCRIPTION:    Image to build Atom and create a .rpm file
 
-MAINTAINER Rohscx <emailaddress.com>
+# Base docker image
+FROM nodesource/fedora21:4.2.6
 
-RUN   apk update \                                                                                                                                                                                                                        
-  &&   apk add ca-certificates wget \                                                                                                                                                                                                      
-  &&   update-ca-certificates  
+# Install dependencies
+RUN yum install -y \
+    make \
+    gcc \
+    gcc-c++ \
+    glibc-devel \
+    git-core \
+    libgnome-keyring-devel \
+    rpmdevtools
 
+RUN npm install -g npm --loglevel error
 
-
-RUN apk add bash-completion
-
+ADD . /atom
+WORKDIR /atom
