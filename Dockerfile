@@ -12,7 +12,8 @@ RUN yum install -y \
     glibc-devel \
     git-core \
     libgnome-keyring-devel \
-    rpmdevtools
+    rpmdevtools \
+    wget
 
 RUN npm install -g npm --loglevel error
 
